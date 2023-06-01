@@ -59,7 +59,7 @@ pnpm dev
 
 ```sh
 -web-
-pnpm stroybook
+pnpm storybook
 ```
 
 
