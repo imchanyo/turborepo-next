@@ -1,8 +1,9 @@
-"use client";
+ "use client";
 
 import { User } from "../../types";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import { Button } from "ui";
+import {useState} from "react";
  
 
 async function getUsers() {
@@ -13,18 +14,23 @@ async function getUsers() {
 }
 
 export default function ListUsers() {
-  const [count, setCount] = React.useState(0);
-  console.log(15,process.env.NEXT_PUBLIC_API_KEY, process)
+  const [count, setCount] = useState(0);
   const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ["hydrate-users"],
     queryFn: () => getUsers(),
   });
- 
+  const onClick = (label : string) => {
+    const num = label === 'increment' ? 1 : -1
+    setCount((prev)=> prev + num)
+  }
+
   return (
     <main style={{ maxWidth: 1200, marginInline: "auto", padding: 20 }}>
       <div style={{ marginBottom: "4rem", textAlign: "center" }}>
         <h4 style={{ marginBottom: 16 }}>{count}</h4>
-        <button onClick={() => setCount((prev) => prev + 1)}>increment</button>
+        <Button  size="small"  color="green" backgroundColor="pink" onClick={() => onClick('increment')}> increment</Button>
+        <Button  size="large"  color="red" primary onClick={() => onClick('decrement')}> decrement</Button>
+      
         <button
           onClick={() => setCount((prev) => prev - 1)}
           style={{ marginInline: 16 }}
