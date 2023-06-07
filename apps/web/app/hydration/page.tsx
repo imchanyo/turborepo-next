@@ -4,7 +4,7 @@ import ListUsers from "./item";
 import { User } from "../../types";
 import {Hydrate} from "store/query"
 import getQueryClient from "store/query/getQueryClient"
-
+ 
 
 async function getUsers() {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
