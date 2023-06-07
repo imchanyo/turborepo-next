@@ -2,9 +2,12 @@
 
 import { User } from "../../types";
 import { useQuery } from "@tanstack/react-query";
-import { Button } from "ui";
-import {useState} from "react";
  
+import {useState} from "react";
+import {AutocompleteStyled} from "ui/AutocompleteStyled";
+import {ButtonMui} from 'ui/ButtonMui' 
+
+// import {ButtonStyle} from 'ui/Button'
 
 async function getUsers() {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -26,11 +29,13 @@ export default function ListUsers() {
 
   return (
     <main style={{ maxWidth: 1200, marginInline: "auto", padding: 20 }}>
+       <AutocompleteStyled>auoto</AutocompleteStyled>
       <div style={{ marginBottom: "4rem", textAlign: "center" }}>
         <h4 style={{ marginBottom: 16 }}>{count}</h4>
-        <Button  size="small"  color="green" backgroundColor="pink" onClick={() => onClick('increment')}> increment</Button>
-        <Button  size="large"  color="red" primary onClick={() => onClick('decrement')}> decrement</Button>
+        {/* <ButtonStyle size="small"  color="green" backgroundColor="pink" onClick={() => onClick('increment')}> increment</ButtonStyle> */}
+        {/* <ButtonStyle size="large"  color="red" primary onClick={() => onClick('decrement')}> decrement</ButtonStyle> */}
       
+       <ButtonMui>asdasd</ButtonMui>
         <button
           onClick={() => setCount((prev) => prev - 1)}
           style={{ marginInline: 16 }}

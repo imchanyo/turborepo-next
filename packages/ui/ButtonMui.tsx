@@ -1,7 +1,8 @@
  
 import React from 'react';
 import styled from '@emotion/styled';
- 
+import {Button} from '@mui/material' 
+
 interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
@@ -68,15 +69,13 @@ ${(props) =>
  * Primary UI component for user interaction
  */
 
-export const Button = ({
+export const ButtonMui = ({
   children,
-  onClick,
-  ...props
 }: ButtonProps) => {
- 
+  console.log(children)
   return (
-    <StyledButton  onClick={onClick}{...props}>
-      {props.label}
-    </StyledButton>
+    <div>
+    <Button  color='error' variant='outlined' children={children}/>        
+    </div>
   );
 };

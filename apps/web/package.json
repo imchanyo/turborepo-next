@@ -14,6 +14,8 @@
     "@emotion/babel-preset-css-prop": "^11.11.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.4",
     "@tanstack/query-core": "^4.29.11",
     "@tanstack/react-query": "^4.29.12",
     "@tanstack/react-query-devtools": "^4.27.0",
