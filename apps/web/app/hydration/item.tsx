@@ -6,6 +6,8 @@ import { useQuery } from "@tanstack/react-query";
 import {useState} from "react";
 import {AutocompleteStyled} from "ui/AutocompleteStyled";
 import {ButtonMui} from 'ui/ButtonMui' 
+import {DialogComponent} from 'ui/DialogComponent'
+
 
 // import {ButtonStyle} from 'ui/Button'
 
@@ -18,6 +20,7 @@ async function getUsers() {
 
 export default function ListUsers() {
   const [count, setCount] = useState(0);
+  const [open, setOpen] = useState(false);
   const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ["hydrate-users"],
     queryFn: () => getUsers(),
@@ -27,9 +30,19 @@ export default function ListUsers() {
     setCount((prev)=> prev + num)
   }
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const title = 'Wisdom 탈퇴 전 아래의 내용을 확인해주세요.'
+
   return (
     <main style={{ maxWidth: 1200, marginInline: "auto", padding: 20 }}>
-       <AutocompleteStyled>auoto</AutocompleteStyled>
+       <AutocompleteStyled/>
+       <ButtonMui onClick={handleClickOpen}>Open modal</ButtonMui>
+       <DialogComponent maxWidth="sm" title={title} open={open} onClose={handleClose}>Test</DialogComponent>
       <div style={{ marginBottom: "4rem", textAlign: "center" }}>
         <h4 style={{ marginBottom: 16 }}>{count}</h4>
         {/* <ButtonStyle size="small"  color="green" backgroundColor="pink" onClick={() => onClick('increment')}> increment</ButtonStyle> */}

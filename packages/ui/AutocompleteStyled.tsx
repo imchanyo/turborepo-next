@@ -2,17 +2,24 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import { useSlotProps } from "@mui/base";
 
-interface AuotoProps {
-  children: React.ReactNode;
+ 
+interface StyledAutocompleteProps {
+  color?: string;
+  paddingLeft? : 26;
 }
 
 const StyledAutocomplete = styled(Autocomplete)({
+  
+
   "& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)": {
     // Default transform is "translate(14px, 20px) scale(1)""
     // This lines up the label with the initial cursor position in the input
     // after changing its padding-left.
     transform: "translate(34px, 20px) scale(1);"
+
   },
   "&.Mui-focused .MuiInputLabel-outlined": {
     color: "red"
@@ -36,11 +43,13 @@ const StyledAutocomplete = styled(Autocomplete)({
   }
 });
 
-export const AutocompleteStyled = ({
-  children,
-} : AuotoProps) => {
+
+const StyledOptionBox = styled(Box)<StyledAutocompleteProps>`
+  ${(props)=> props.color && `color : ${props.color}`}
+`
+
+export const AutocompleteStyled = () => {
   const auotoChange = () => console.log('hi')
-  console.log(children)
   return (
     <StyledAutocomplete
       id="combo-box-demo"
@@ -48,8 +57,10 @@ export const AutocompleteStyled = ({
       onChange={auotoChange}
       renderOption={(props, option :any) => {
         return (
-          <li {...props} key={option}>
+          <li {...props}  >
+            <StyledOptionBox color='blue'>
             {option}
+            </StyledOptionBox>
           </li>
         );
       }}

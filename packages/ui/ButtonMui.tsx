@@ -71,11 +71,11 @@ ${(props) =>
 
 export const ButtonMui = ({
   children,
+  onClick,
 }: ButtonProps) => {
-  console.log(children)
   return (
     <div>
-    <Button  color='error' variant='outlined' children={children}/>        
+    <Button  color='error' variant='outlined' onClick={onClick} children={children}/>        
     </div>
   );
 };
